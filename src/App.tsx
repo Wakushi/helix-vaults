@@ -8,6 +8,7 @@ import ScrollUpButton from "./shared/components/scroll-up-button/ScrollUpButton"
 import PointsModal from "./shared/components/points-modal/PointsModal"
 import AboutModal from "./shared/components/about-modal/AboutModal"
 import Snackbar from "./shared/components/snackbar/Snackbar"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
 	const [userKey, setUserKey] = useState("")
@@ -239,6 +240,7 @@ export default function App() {
 			{isAboutModalShowing && (
 				<AboutModal toggleAboutModal={toggleAboutModal} />
 			)}
+			<Analytics />
 		</>
 	)
 }
