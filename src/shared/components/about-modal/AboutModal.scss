@@ -1,0 +1,44 @@
+@import "../../../assets/variables.scss";
+
+.modal-container {
+	.modal-inner {
+		p {
+			max-width: 90vw;
+			font-size: 1rem;
+			text-align: center;
+
+			span {
+				&.address {
+					font-size: 1rem;
+				}
+				.fa-ethereum {
+					margin: 0.4rem;
+				}
+			}
+
+			@media (width > 768px) {
+				font-size: 1.5rem;
+			}
+		}
+
+		.socials {
+			margin: 2rem 0;
+			gap: 4rem;
+
+			h2 {
+				font-size: 2rem;
+			}
+
+			i {
+				font-size: 4rem;
+				color: #1d9bf0;
+				transition: 500ms;
+
+				&:hover {
+					transform: scale(1.08);
+					color: #fff;
+				}
+			}
+		}
+	}
+}

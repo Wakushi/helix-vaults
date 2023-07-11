@@ -1,0 +1,21 @@
+@import "./assets/variables.scss";
+
+.filter-btns {
+	margin: 8rem auto 4rem;
+	flex-wrap: wrap;
+	padding: 2rem;
+	max-width: 1200px;
+
+	button {
+		flex: 1;
+		white-space: nowrap;
+		max-width: 200px;
+	}
+}
+
+.stacked-collectibles-list {
+	gap: 2rem;
+	flex-wrap: wrap;
+	padding: 2rem 0;
+}
+

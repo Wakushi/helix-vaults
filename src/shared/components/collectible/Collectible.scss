@@ -1,0 +1,95 @@
+@import "../../../assets/variables.scss";
+
+.collectible-card {
+	background-color: $dark-bg-color;
+	border: $border-dark;
+	width: 300px;
+	transition: 500ms;
+	animation: fade-in-grow 1.3s ease-in-out forwards;
+
+	&:hover {
+		box-shadow: 1px 5px 40px rgba(63, 63, 63, 0.603);
+
+		img {
+			transform: scale(1.02);
+		}
+	}
+
+	.collectible-info-top {
+		width: 100%;
+		padding: 1rem;
+
+		h3 {
+			font-size: 1.25rem;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			max-width: 90%;
+			overflow: hidden;
+		}
+
+		h4 {
+			color: $alt-text-color-dark;
+			font-weight: 600;
+			font-size: 1rem;
+		}
+
+		.collectible-info-top-a {
+			margin-bottom: 0.4rem;
+		}
+
+		.collectible-info-top-b {
+			h5 {
+				font-size: 1rem;
+				font-weight: 500;
+				width: 100%;
+				letter-spacing: 1.2px;
+
+				&:nth-child(2) {
+					text-align: end;
+					justify-content: flex-end;
+				}
+
+				.spark-icon {
+					max-width: 10px;
+				}
+				.clock-icon {
+					max-width: 15px;
+				}
+			}
+		}
+	}
+
+	.collectible-info-bottom {
+		margin: 0.4rem 0;
+		padding: 0.3rem 2.5rem;
+		box-shadow: inset 1px 1px 30px #070707;
+		border: $border-dark;
+
+		p {
+			font-size: 0.9rem;
+		}
+	}
+
+	.image-container {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+
+		img {
+			transition: 1s;
+		}
+
+		h6 {
+			font-size: 1.2rem;
+			font-weight: 500;
+			position: absolute;
+			bottom: 42px;
+			right: 15px;
+			text-shadow: 1px 1px 5px black;
+			background-color: #07070727;
+			border-radius: 50%;
+			padding: 0.4rem 0.5rem;
+			box-shadow: inset 1px 1px 5px black;
+		}
+	}
+}

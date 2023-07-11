@@ -1,0 +1,72 @@
+@import "../../../assets/variables.scss";
+
+.hero {
+	height: 100vh;
+	background-image: url("../../../assets/images/backgrounds/helix-head.svg");
+	background-position: center -10px;
+	background-repeat: no-repeat;
+	background-size: 1260px 458px;
+	padding: 0 1rem;
+
+	.hero-content {
+		position: relative;
+		text-align: center;
+		gap: 2rem;
+		padding:9vw;
+
+		h1,
+		p,
+		.search-bar-container {
+			animation: fade-in-grow 1.3s ease-in-out forwards;
+		}
+
+		h1 {
+			font-size: 2rem;
+
+			@media (width > 900px) {
+				font-size: 6vw;
+			}
+		}
+
+		p {
+			font-size: 1rem;
+
+			@media (width > 900px) {
+				font-size: 2vw;
+			}
+		}
+
+		.search-bar-container {
+			border: 1px solid $secondary-color-light;
+			border-radius: 10rem;
+			width: 100%;
+			max-width: 460px;
+			margin-bottom: 8rem;
+			transition: 1s;
+
+			&:hover,
+			&:focus {
+				box-shadow: 1px 1px 10px 0px $secondary-color-light;
+			}
+
+			@media (width > 900px) {
+				width: 25vw;
+			}
+
+			.key-input {
+				outline: none;
+				border: transparent;
+				background-color: transparent;
+				color: $secondary-color-light;
+				padding: 1rem 1.3rem;
+				width: 100%;
+				font-size: 1.2rem;
+
+				&::placeholder {
+					color: $secondary-color-light;
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+}

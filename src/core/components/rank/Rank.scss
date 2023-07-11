@@ -1,0 +1,34 @@
+@import "../../../assets/variables.scss";
+
+.user-rank {
+	height: 100vh;
+	background-image: url("../../../assets/images/backgrounds/helix-head.svg");
+	background-position: center 250px;
+	background-repeat: no-repeat;
+	background-size: 1260px 458px;
+
+	.rank-content {
+		position: relative;
+		padding: 10vw 20vw;
+		h2,
+		p {
+			opacity: 0;
+			animation: fade-in-grow 1s 1.3s ease-in-out forwards;
+		}
+		h2 {
+			font-size: 1.8rem;
+
+			@media (width > 900px) {
+				font-size: 5vw;
+			}
+		}
+
+		p {
+			font-size: 2rem;
+
+			@media (width > 900px) {
+				font-size: 4vw;
+			}
+		}
+	}
+}

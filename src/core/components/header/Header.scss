@@ -1,0 +1,63 @@
+@import "../../../assets/variables.scss";
+
+header {
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	width: 100%;
+	background-color: black;
+	border-bottom: $border-light;
+	padding: 0.6rem 2rem;
+	animation: slide-in-top 1s ease-in-out forwards;
+
+	.logo-container {
+		max-width: 150px;
+		padding-right: 1rem;
+	}
+
+	h1 {
+		border-left: $border;
+		padding-left: 1rem;
+		font-size: 1.5rem;
+		display: none;
+
+		@media (width > 500px) {
+			display: block;
+		}
+	}
+
+	.nav-list {
+		li {
+			font-size: 1.2rem;
+			font-weight: 500;
+			transition: 500ms;
+			cursor: pointer;
+
+			&:hover {
+				color: $secondary-color-light;
+			}
+
+			&.points-modal-btn {
+				display: none;
+
+				@media (width > 1250px) {
+					display: block;
+				}
+			}
+
+			&.about-modal-btn {
+				.fa-user-astronaut {
+					pointer-events: none;
+				}
+				span {
+					display: none;
+					pointer-events: none;
+
+					@media (width > 500px) {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
