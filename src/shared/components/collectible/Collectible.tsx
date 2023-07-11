@@ -106,9 +106,9 @@ export default function Collectible({ data, type }: CollectibleProps) {
 			</div>
 			<div className="collectible-info-bottom">
 				<p>
-					Stacked period : {getStackedPeriodDays(stakedPeriod)} days
+					Staked period : {getStackedPeriodDays(stakedPeriod)} days
 				</p>
-				<p>Stacked the {getStackingStartDate(startTimestamp)} </p>
+				<p>Staked the {getStackingStartDate(startTimestamp)} </p>
 				<p>Locked until the {getStackingEndDate(endTimestamp)}</p>
 			</div>
 		</div>
