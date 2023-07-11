@@ -6,7 +6,7 @@ export default function Hero(props: any) {
 		<section className="hero flex--center flex--column">
 			<div className="hero-content flex--center flex--column">
 				<h1>WELCOME TO THE VAULTS</h1>
-				<p>Start searching by enterring the vault's key</p>
+				<p>Start searching by entering the vault's key</p>
 				<div className="search-bar-container flex">
 					<input
 						type="text"
