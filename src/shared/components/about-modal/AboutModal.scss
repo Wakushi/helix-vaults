@@ -9,7 +9,12 @@
 
 			span {
 				&.address {
-					font-size: 1rem;
+					font-size: 1.4rem;
+					transition: 1s;
+					cursor: pointer;
+					&:hover {
+						color: #fff;
+					}
 				}
 				.fa-ethereum {
 					margin: 0.4rem;

@@ -1,0 +1,11 @@
+@import "../../../assets/variables.scss";
+
+.snackbar-container {
+	position: absolute;
+	z-index: 5;
+	background-color: $dark-bg-color;
+	padding: 1rem 2rem;
+	top: -10%;
+	left: 50%;
+	transform: translate(-50%);
+}
