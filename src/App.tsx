@@ -95,7 +95,7 @@ export default function App() {
 		if (!authorizedInteraction.includes(target.id)) {
 			return
 		} else if (target.id === "aboutModalXmark") {
-			setIsAboutModalShowing((prevIsShown) => (prevIsShown = false))
+			setIsAboutModalShowing(false)
 		} else {
 			setIsAboutModalShowing(
 				(prevIsShown) => (prevIsShown = !prevIsShown)
