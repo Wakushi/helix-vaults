@@ -91,11 +91,6 @@ export default function App() {
 		setIsAboutModalShowing((prevIsShown) => (prevIsShown = !prevIsShown))
 	}
 
-	// 0x7Edf678aa8eb0D95b5a40ab293F9ba01fEa60Fef
-
-	// 0xCc413E2C6709Bd1ca4e95002BfaE3929666FbF8f
-
-	// 0x5F8E0020C3164fB7EB170D7345672F6948Ca0FF4
 	useEffect(() => {
 		if (userKey.length >= 42) {
 			getRank()
