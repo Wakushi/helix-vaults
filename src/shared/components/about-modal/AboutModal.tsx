@@ -20,7 +20,7 @@ export default function AboutModal({ toggleAboutModal }: any) {
 			>
 				<p>
 					This is a <span className="brand--color">non-official</span>{" "}
-					website, made for the community.
+					website, made for the community. It's purpose is to show anyone's current stacked items.
 				</p>
 				<p>
 					Helix is an{" "}
