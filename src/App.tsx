@@ -87,7 +87,6 @@ export default function App() {
 	}
 
 	function toggleAboutModal({ target }: any) {
-		console.log(target.id)
 		const authorizedInteraction = [
 			"modal-container",
 			"aboutModalBtn",
