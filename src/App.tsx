@@ -87,9 +87,21 @@ export default function App() {
 	}
 
 	function toggleAboutModal({ target }: any) {
-		if (target.id !== "modal-container" && target.id !== "aboutModalBtn")
+		console.log(target.id)
+		const authorizedInteraction = [
+			"modal-container",
+			"aboutModalBtn",
+			"aboutModalXmark"
+		]
+		if (!authorizedInteraction.includes(target.id)) {
 			return
-		setIsAboutModalShowing((prevIsShown) => (prevIsShown = !prevIsShown))
+		} else if (target.id === "aboutModalXmark") {
+			setIsAboutModalShowing((prevIsShown) => (prevIsShown = false))
+		} else {
+			setIsAboutModalShowing(
+				(prevIsShown) => (prevIsShown = !prevIsShown)
+			)
+		}
 	}
 
 	useEffect(() => {

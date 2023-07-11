@@ -12,7 +12,7 @@
 		position: relative;
 		text-align: center;
 		gap: 2rem;
-		padding:9vw;
+		padding: 9vw;
 
 		h1,
 		p,
@@ -22,9 +22,10 @@
 
 		h1 {
 			font-size: 2rem;
-
+			margin-top: 5rem;
 			@media (width > 900px) {
 				font-size: 6vw;
+				margin-top: 1rem;
 			}
 		}
 

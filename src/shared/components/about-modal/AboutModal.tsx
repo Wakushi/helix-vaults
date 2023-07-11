@@ -13,6 +13,7 @@ export default function AboutModal({ toggleAboutModal }: any) {
 			id="modal-container"
 			className="modal-container flex--center"
 		>
+			<i id="aboutModalXmark" className="fa-solid fa-xmark" onClick={toggleAboutModal}></i>
 			<div
 				id="modal-inner"
 				className="modal-inner flex--center flex--column min--gap"
@@ -48,7 +49,10 @@ export default function AboutModal({ toggleAboutModal }: any) {
 					I'm currently in a working/studying program, and I did this
 					on my free time, so if you like this tool, you can buy me a
 					coffee !<br></br>
-					<span className="brand--color address" onClick={onCopyAddress}>
+					<span
+						className="brand--color address"
+						onClick={onCopyAddress}
+					>
 						<i className="fa-brands fa-ethereum"></i>
 						0x6dffD1245d2cCd37B89726e29145DB9d2672EA67
 					</span>

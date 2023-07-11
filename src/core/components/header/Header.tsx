@@ -24,15 +24,15 @@ export default function Header({ togglePointsModal, toggleAboutModal }: any) {
 					<li
 						id="aboutModalBtn"
 						onClick={toggleAboutModal}
-						className="about-modal-btn flex"
+						className="about-modal-btn flex min--gap"
 					>
 						<i className="fa-solid fa-user-astronaut"></i>
-						<span>About</span>
+						<span> About</span>
 					</li>
-					<li>
+					{/* <li>
 						{" "}
 						<i className="fa-solid fa-music"></i>
-					</li>
+					</li> */}
 				</ul>
 			</div>
 		</header>
