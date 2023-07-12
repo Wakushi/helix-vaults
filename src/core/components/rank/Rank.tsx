@@ -27,7 +27,7 @@ export default function Rank({ userRank, userBid }: any) {
 						<h2>Total bid</h2>
 						<p className="brand--color bold--text">
 							{" "}
-							{userBid.entry.paid}{" "}
+							{userBid.entry.paid.toFixed(3)}{" "}
 							<i className="fa-brands fa-ethereum"></i>
 						</p>
 					</div>

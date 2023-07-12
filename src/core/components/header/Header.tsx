@@ -14,6 +14,18 @@ export default function Header({ togglePointsModal, toggleAboutModal }: any) {
 			</div>
 			<div className="flex gap">
 				<ul className="nav-list flex gap">
+					<li>
+						<a href="/" className="flex min--gap">
+							<i className="fa-solid fa-vault"></i>
+							<span className="nav-text"> Vault</span>
+						</a>
+					</li>
+					<li>
+						<a href="auction" className="flex min--gap">
+							<i className="fa-solid fa-gavel"></i>
+							<span className="nav-text"> Auction</span>
+						</a>
+					</li>
 					<li
 						id="pointModalBtn"
 						className="points-modal-btn"
@@ -27,12 +39,8 @@ export default function Header({ togglePointsModal, toggleAboutModal }: any) {
 						className="about-modal-btn flex min--gap"
 					>
 						<i className="fa-solid fa-user-astronaut"></i>
-						<span> About</span>
+						<span className="nav-text"> About</span>
 					</li>
-					{/* <li>
-						{" "}
-						<i className="fa-solid fa-music"></i>
-					</li> */}
 				</ul>
 			</div>
 		</header>

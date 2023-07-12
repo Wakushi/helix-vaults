@@ -35,7 +35,7 @@ li {
 }
 *::-webkit-scrollbar-track {
 	border-radius: 5px;
-	background-color: #ffffff;
+	background-color: #ffffff0c;
 }
 
 *::-webkit-scrollbar-track:hover {
@@ -124,6 +124,17 @@ li {
 
 .flicker {
 	animation: flicker-in-1 2s linear both;
+}
+
+@keyframes fade-in-left {
+	0% {
+		transform: translateX(50px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }
 
 @keyframes fade-in-grow {

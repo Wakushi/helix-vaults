@@ -1,0 +1,63 @@
+@import "../../assets/variables.scss";
+
+.auction-container {
+	overflow-x: scroll;
+	@media (width > 850px) {
+		overflow-x: hidden;
+	}
+}
+
+.auction-page {
+	margin-top: 5rem;
+	border: $border-light;
+	text-align: center;
+	min-width: 850px;
+	animation: fade-in-left 1s ease-in-out;
+
+	margin: 5rem auto 0;
+
+	.auction-header {
+		width: 100%;
+		font-weight: 600;
+		font-size: 1.2rem;
+
+		div {
+			flex: 1;
+			padding: 0.3rem;
+		}
+	}
+	.auction-table {
+		width: 100%;
+		.auction-row {
+			width: 100%;
+
+			&:nth-child(odd) {
+				background-color: $table-row;
+			}
+
+			.auction-column {
+				flex: 1;
+				padding: 0.6rem 0.3rem;
+
+				&.bidder-row {
+					flex: 1;
+					overflow: hidden;
+
+					text-overflow: ellipsis;
+					&:hover {
+						color: $secondary-color-light;
+					}
+				}
+
+				&.vault-row {
+					text-align: center;
+					i {
+						&:hover {
+							color: $secondary-color-light;
+						}
+					}
+				}
+			}
+		}
+	}
+}

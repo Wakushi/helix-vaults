@@ -16,7 +16,7 @@ header {
 	}
 
 	h1 {
-		border-left: $border;
+		border-left: $border-light;
 		padding-left: 1rem;
 		font-size: 1.5rem;
 		display: none;
@@ -27,6 +27,14 @@ header {
 	}
 
 	.nav-list {
+		.nav-text {
+			display: none;
+			pointer-events: none;
+
+			@media (width > 600px) {
+				display: block;
+			}
+		}
 		li {
 			font-size: 1.2rem;
 			font-weight: 500;
