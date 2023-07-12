@@ -20,6 +20,7 @@ export default function App() {
 		rank: "",
 		total: ""
 	})
+	const [auctionData, setAuctionData] = useState({} as AuctionData)
 
 	const [filters, setFilters] = useState([
 		"collectible",
@@ -60,6 +61,16 @@ export default function App() {
 			.then((data) => {
 				setUserItems(data)
 				setIsLoading(false)
+			})
+	}
+
+	function getAuctionData(): void {
+		fetch(
+			`https://auction.helixmetaverse.com/api/logs/leaderboard/1?address=${userKey}`
+		)
+			.then((r) => r.json())
+			.then((data) => {
+				setAuctionData(data.data)
 			})
 	}
 
@@ -137,6 +148,7 @@ export default function App() {
 			setIsLoading(true)
 			getRank()
 			getWalletItems()
+			getAuctionData()
 			setTimeout(() => {
 				window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
 			}, 1000)
@@ -167,7 +179,7 @@ export default function App() {
 			/>
 			{isDataReady() && !isLoading && (
 				<>
-					<Rank userRank={userRank} />
+					<Rank userRank={userRank} userBid={auctionData} />
 
 					<div className="filter-btns flex--center gap">
 						<button
