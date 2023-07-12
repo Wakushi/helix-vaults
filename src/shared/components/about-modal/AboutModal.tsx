@@ -1,10 +1,11 @@
 import "./AboutModal.scss"
 
-export default function AboutModal({ toggleAboutModal }: any) {
+export default function AboutModal({ toggleAboutModal, openSnackBar }: any) {
 	function onCopyAddress(): void {
 		navigator.clipboard.writeText(
 			"0x6dffD1245d2cCd37B89726e29145DB9d2672EA67"
 		)
+		openSnackBar()
 	}
 
 	return (
@@ -13,14 +14,19 @@ export default function AboutModal({ toggleAboutModal }: any) {
 			id="modal-container"
 			className="modal-container flex--center"
 		>
-			<i id="aboutModalXmark" className="fa-solid fa-xmark" onClick={toggleAboutModal}></i>
+			<i
+				id="aboutModalXmark"
+				className="fa-solid fa-xmark"
+				onClick={toggleAboutModal}
+			></i>
 			<div
 				id="modal-inner"
 				className="modal-inner flex--center flex--column min--gap"
 			>
 				<p>
 					This is a <span className="brand--color">non-official</span>{" "}
-					website, made for the community. Its purpose is to show anyone's current staked items.
+					website, made for the community. Its purpose is to show
+					anyone's current staked items.
 				</p>
 				<p>
 					Helix is an{" "}

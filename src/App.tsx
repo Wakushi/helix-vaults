@@ -9,7 +9,7 @@ import PointsModal from "./shared/components/points-modal/PointsModal"
 import AboutModal from "./shared/components/about-modal/AboutModal"
 import Snackbar from "./shared/components/snackbar/Snackbar"
 import { Analytics } from "@vercel/analytics/react"
-import { sanitizeInput } from "./utils"
+import { getRawUrl, sanitizeInput } from "./utils"
 
 export default function App() {
 	const [isLoading, setIsLoading] = useState(false)
@@ -32,6 +32,8 @@ export default function App() {
 	const [isScrollBtnVisible, setIsScrollBtnVisible] = useState(false)
 	const [isPointsModalShowing, setIsPointsModalShowing] = useState(false)
 	const [isAboutModalShowing, setIsAboutModalShowing] = useState(false)
+	const [snackbarMessageType, setSnackbarMessageType] = useState("copy")
+	const [isSnackbarShowing, setIsSnackbarShowing] = useState(false)
 
 	function handleChange(event: any) {
 		const { value } = event.target
@@ -62,7 +64,7 @@ export default function App() {
 	}
 
 	function isDataReady(): boolean {
-		return userRank.balance > 0
+		return userRank && userRank.balance > 0
 	}
 
 	function isFiltered(type: string): boolean {
@@ -108,6 +110,28 @@ export default function App() {
 		}
 	}
 
+	function detectUrlKeyParam(): void {
+		const url = new URL(window.location.href)
+		const params = new URLSearchParams(url.search)
+		const key = params.get("key")
+		if (key) {
+			setUserKey(sanitizeInput(key) || "")
+		}
+	}
+
+	function copyUrlWithKey(): void {
+		navigator.clipboard.writeText(`${getRawUrl()}?key=${userKey}`)
+		openSnackBar("copy")
+	}
+
+	function openSnackBar(type: string): void {
+		setSnackbarMessageType(type)
+		setIsSnackbarShowing(true)
+		setTimeout(() => {
+			setIsSnackbarShowing(false)
+		}, 2000)
+	}
+
 	useEffect(() => {
 		if (userKey.length >= 42) {
 			setIsLoading(true)
@@ -120,12 +144,15 @@ export default function App() {
 	}, [userKey])
 
 	useEffect(() => {
+		detectUrlKeyParam()
 		window.addEventListener("scroll", toggleScrollBtnVisibility)
 	}, [])
 
 	return (
 		<>
-			<Snackbar />
+			{isSnackbarShowing && (
+				<Snackbar snackbarMessageType={snackbarMessageType} />
+			)}
 			<Header
 				togglePointsModal={togglePointsModal}
 				toggleAboutModal={toggleAboutModal}
@@ -136,6 +163,7 @@ export default function App() {
 				handleChange={handleChange}
 				handlePaste={handlePaste}
 				isLoading={isLoading}
+				copyUrlWithKey={copyUrlWithKey}
 			/>
 			{isDataReady() && !isLoading && (
 				<>
@@ -190,6 +218,7 @@ export default function App() {
 								(collectible: Collectible) => {
 									return (
 										<Collectible
+											key={collectible.id}
 											data={collectible}
 											type="pass"
 										/>
@@ -201,6 +230,7 @@ export default function App() {
 							userItems.stakes.lands.map((collectible: Land) => {
 								return (
 									<Collectible
+										key={collectible.id}
 										data={collectible}
 										type="land"
 									/>
@@ -212,6 +242,7 @@ export default function App() {
 								(collectible: Collectible) => {
 									return (
 										<Collectible
+											key={collectible.id}
 											data={collectible}
 											type="collectible"
 										/>
@@ -224,6 +255,7 @@ export default function App() {
 								(collectible: Collectible) => {
 									return (
 										<Collectible
+											key={collectible.id}
 											data={collectible}
 											type="airdrop1"
 										/>
@@ -236,6 +268,7 @@ export default function App() {
 								(collectible: Collectible) => {
 									return (
 										<Collectible
+											key={collectible.id}
 											data={collectible}
 											type="airdrop2"
 										/>
@@ -251,7 +284,10 @@ export default function App() {
 				<PointsModal togglePointsModal={togglePointsModal} />
 			)}
 			{isAboutModalShowing && (
-				<AboutModal toggleAboutModal={toggleAboutModal} />
+				<AboutModal
+					toggleAboutModal={toggleAboutModal}
+					openSnackBar={() => openSnackBar("copy")}
+				/>
 			)}
 			<Analytics />
 		</>

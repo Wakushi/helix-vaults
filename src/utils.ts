@@ -23,10 +23,21 @@ function sanitizeInput(text: string) {
 	return textNode.textContent
 }
 
+function getRawUrl(): string {
+	return (
+		window.location.protocol +
+		"//" +
+		window.location.hostname +
+		(window.location.port ? ":" + window.location.port : "") +
+		window.location.pathname
+	)
+}
+
 export {
 	getStackedPeriodDays,
 	getRemaingDays,
 	getStackingEndDate,
 	getStackingStartDate,
-	sanitizeInput
+	sanitizeInput,
+	getRawUrl
 }

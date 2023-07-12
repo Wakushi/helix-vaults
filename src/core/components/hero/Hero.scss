@@ -16,7 +16,8 @@
 
 		h1,
 		p,
-		.search-bar-container {
+		.search-bar-container,
+		.fa-share-nodes {
 			animation: fade-in-grow 1.3s ease-in-out forwards;
 		}
 
@@ -43,6 +44,7 @@
 			width: 100%;
 			max-width: 470px;
 			transition: 1s;
+			margin-right: 1rem;
 
 			&:hover,
 			&:focus {
@@ -50,7 +52,7 @@
 			}
 
 			@media (width > 900px) {
-				width: 25vw;
+				width: 40vw;
 			}
 
 			.key-input {
@@ -81,6 +83,20 @@
 
 			@media (width > 1200px) {
 				bottom: 80px;
+			}
+		}
+
+		.fa-share-nodes {
+			font-size: 1.2rem;
+			cursor: pointer;
+			transition: 500ms;
+
+			&:hover {
+				color: white;
+			}
+
+			@media (width > 900px) {
+				font-size: 2rem;
 			}
 		}
 	}

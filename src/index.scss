@@ -148,6 +148,21 @@ li {
 	}
 }
 
+@keyframes slide-in-and-out {
+	0% {
+		top: -10%;
+	}
+	40% {
+		top: 0%;
+	}
+	80% {
+		top: 0%;
+	}
+	100% {
+		top: -10%;
+	}
+}
+
 @keyframes flicker-in-1 {
 	0% {
 		opacity: 0;
