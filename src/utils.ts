@@ -18,9 +18,15 @@ function getRemaingDays(time: number): number {
 	return Math.floor(time / DAY_IN_SEC)
 }
 
+function sanitizeInput(text: string) {
+	const textNode = document.createTextNode(text)
+	return textNode.textContent
+}
+
 export {
 	getStackedPeriodDays,
 	getRemaingDays,
 	getStackingEndDate,
-	getStackingStartDate
+	getStackingStartDate,
+	sanitizeInput
 }

@@ -42,7 +42,6 @@
 			border-radius: 10rem;
 			width: 100%;
 			max-width: 470px;
-			margin-bottom: 8rem;
 			transition: 1s;
 
 			&:hover,
@@ -67,6 +66,21 @@
 					color: $secondary-color-light;
 					font-size: 1.2rem;
 				}
+			}
+		}
+
+		.error-message {
+			position: absolute;
+			bottom: -10%;
+			font-size: 1rem;
+			color: $secondary-color-light;
+
+			@media (width > 900px) {
+				bottom: 60px;
+			}
+
+			@media (width > 1200px) {
+				bottom: 80px;
 			}
 		}
 	}

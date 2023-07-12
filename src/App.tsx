@@ -9,8 +9,10 @@ import PointsModal from "./shared/components/points-modal/PointsModal"
 import AboutModal from "./shared/components/about-modal/AboutModal"
 import Snackbar from "./shared/components/snackbar/Snackbar"
 import { Analytics } from "@vercel/analytics/react"
+import { sanitizeInput } from "./utils"
 
 export default function App() {
+	const [isLoading, setIsLoading] = useState(false)
 	const [userKey, setUserKey] = useState("")
 	const [userItems, setUserItems] = useState({} as UserCollectibles)
 	const [userRank, setUserRank] = useState({
@@ -33,12 +35,12 @@ export default function App() {
 
 	function handleChange(event: any) {
 		const { value } = event.target
-		setUserKey(value)
+		setUserKey(sanitizeInput(value) || "")
 	}
 
 	function handlePaste(event: any) {
 		const { value } = event.target
-		setUserKey(value)
+		setUserKey(sanitizeInput(value) || "")
 	}
 
 	function getRank(): void {
@@ -46,6 +48,7 @@ export default function App() {
 			.then((r) => r.json())
 			.then((data) => {
 				setUserRank(data.payload)
+				setIsLoading(false)
 			})
 	}
 
@@ -54,6 +57,7 @@ export default function App() {
 			.then((r) => r.json())
 			.then((data) => {
 				setUserItems(data)
+				setIsLoading(false)
 			})
 	}
 
@@ -73,7 +77,7 @@ export default function App() {
 		}
 	}
 
-	function toggleVisibility(): void {
+	function toggleScrollBtnVisibility(): void {
 		if (window.scrollY > 1000) {
 			setIsScrollBtnVisible(true)
 		} else {
@@ -106,6 +110,7 @@ export default function App() {
 
 	useEffect(() => {
 		if (userKey.length >= 42) {
+			setIsLoading(true)
 			getRank()
 			getWalletItems()
 			setTimeout(() => {
@@ -115,7 +120,7 @@ export default function App() {
 	}, [userKey])
 
 	useEffect(() => {
-		window.addEventListener("scroll", toggleVisibility)
+		window.addEventListener("scroll", toggleScrollBtnVisibility)
 	}, [])
 
 	return (
@@ -127,112 +132,120 @@ export default function App() {
 			/>
 			<Hero
 				userKey={userKey}
+				userRank={userRank}
 				handleChange={handleChange}
 				handlePaste={handlePaste}
+				isLoading={isLoading}
 			/>
-			{isDataReady() && <Rank userRank={userRank} />}
-			{isDataReady() && (
-				<div className="filter-btns flex--center gap">
-					<button
-						className="basic-button"
-						onClick={() => filterCollectibles("all")}
+			{isDataReady() && !isLoading && (
+				<>
+					<Rank userRank={userRank} />
+
+					<div className="filter-btns flex--center gap">
+						<button
+							className="basic-button"
+							onClick={() => filterCollectibles("all")}
+						>
+							All
+						</button>
+						<button
+							className="basic-button"
+							onClick={() => filterCollectibles("pass")}
+						>
+							Pass
+						</button>
+						<button
+							className="basic-button"
+							onClick={() => filterCollectibles("land")}
+						>
+							Lands
+						</button>
+						<button
+							className="basic-button"
+							onClick={() => filterCollectibles("collectible")}
+						>
+							Collectible
+						</button>
+						<button
+							className="basic-button"
+							onClick={() => filterCollectibles("airdrop1")}
+						>
+							Airdrop n°1
+						</button>
+						<button
+							className="basic-button"
+							onClick={() => filterCollectibles("airdrop2")}
+						>
+							Airdrop n°2
+						</button>
+					</div>
+
+					<div
+						id="collectible-list"
+						className="stacked-collectibles-list flex--center"
 					>
-						All
-					</button>
-					<button
-						className="basic-button"
-						onClick={() => filterCollectibles("pass")}
-					>
-						Pass
-					</button>
-					<button
-						className="basic-button"
-						onClick={() => filterCollectibles("land")}
-					>
-						Lands
-					</button>
-					<button
-						className="basic-button"
-						onClick={() => filterCollectibles("collectible")}
-					>
-						Collectible
-					</button>
-					<button
-						className="basic-button"
-						onClick={() => filterCollectibles("airdrop1")}
-					>
-						Airdrop n°1
-					</button>
-					<button
-						className="basic-button"
-						onClick={() => filterCollectibles("airdrop2")}
-					>
-						Airdrop n°2
-					</button>
-				</div>
+						{userItems.stakes &&
+							isFiltered("pass") &&
+							userItems.stakes.passes.map(
+								(collectible: Collectible) => {
+									return (
+										<Collectible
+											data={collectible}
+											type="pass"
+										/>
+									)
+								}
+							)}
+						{userItems.stakes &&
+							isFiltered("land") &&
+							userItems.stakes.lands.map((collectible: Land) => {
+								return (
+									<Collectible
+										data={collectible}
+										type="land"
+									/>
+								)
+							})}
+						{userItems.stakes &&
+							isFiltered("collectible") &&
+							userItems.stakes.collectibles.map(
+								(collectible: Collectible) => {
+									return (
+										<Collectible
+											data={collectible}
+											type="collectible"
+										/>
+									)
+								}
+							)}
+						{userItems.stakes &&
+							isFiltered("airdrop1") &&
+							userItems.stakes.airdrop1.map(
+								(collectible: Collectible) => {
+									return (
+										<Collectible
+											data={collectible}
+											type="airdrop1"
+										/>
+									)
+								}
+							)}
+						{userItems.stakes &&
+							isFiltered("airdrop2") &&
+							userItems.stakes.airdrop2.map(
+								(collectible: Collectible) => {
+									return (
+										<Collectible
+											data={collectible}
+											type="airdrop2"
+										/>
+									)
+								}
+							)}
+					</div>
+				</>
 			)}
-			{isDataReady() && (
-				<div
-					id="collectible-list"
-					className="stacked-collectibles-list flex--center"
-				>
-					{userItems.stakes &&
-						isFiltered("pass") &&
-						userItems.stakes.passes.map(
-							(collectible: Collectible) => {
-								return (
-									<Collectible
-										data={collectible}
-										type="pass"
-									/>
-								)
-							}
-						)}
-					{userItems.stakes &&
-						isFiltered("land") &&
-						userItems.stakes.lands.map((collectible: Land) => {
-							return (
-								<Collectible data={collectible} type="land" />
-							)
-						})}
-					{userItems.stakes &&
-						isFiltered("collectible") &&
-						userItems.stakes.collectibles.map(
-							(collectible: Collectible) => {
-								return (
-									<Collectible
-										data={collectible}
-										type="collectible"
-									/>
-								)
-							}
-						)}
-					{userItems.stakes &&
-						isFiltered("airdrop1") &&
-						userItems.stakes.airdrop1.map(
-							(collectible: Collectible) => {
-								return (
-									<Collectible
-										data={collectible}
-										type="airdrop1"
-									/>
-								)
-							}
-						)}
-					{userItems.stakes &&
-						isFiltered("airdrop2") &&
-						userItems.stakes.airdrop2.map(
-							(collectible: Collectible) => {
-								return (
-									<Collectible
-										data={collectible}
-										type="airdrop2"
-									/>
-								)
-							}
-						)}
-				</div>
-			)}
+
 			{isScrollBtnVisible && <ScrollUpButton />}
 			{isPointsModalShowing && (
 				<PointsModal togglePointsModal={togglePointsModal} />

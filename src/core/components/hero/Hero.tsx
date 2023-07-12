@@ -2,6 +2,8 @@ import HelixFrame from "../../../shared/components/helix-frame/HelixFrame"
 import "./Hero.scss"
 
 export default function Hero(props: any) {
+	const { userKey, handleChange, handlePaste, userRank, isLoading } = props
+
 	return (
 		<section className="hero flex--center flex--column">
 			<div className="hero-content flex--center flex--column">
@@ -11,12 +13,15 @@ export default function Hero(props: any) {
 					<input
 						type="text"
 						className="key-input"
-						value={props.userKey}
+						value={userKey}
 						placeholder="0x000..."
-						onChange={props.handleChange}
-						onPaste={props.handlePaste}
+						onChange={handleChange}
+						onPaste={handlePaste}
 					/>
 				</div>
+				{!userRank.balance && userKey.length >= 42 && !isLoading && (
+					<p className="error-message">This vault is empty</p>
+				)}
 				<HelixFrame />
 			</div>
 		</section>
