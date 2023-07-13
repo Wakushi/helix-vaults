@@ -1,7 +1,16 @@
 import helixLogo from "../../../assets/images/logo/helix-logo.webp"
 import "./Header.scss"
 
-export default function Header({ togglePointsModal, toggleAboutModal }: any) {
+export default function Header({
+	togglePointsModal,
+	toggleAboutModal,
+	getAuctionPoolTotal,
+	getAuctionMinPrice
+}: any) {
+	function isStakingPage(): boolean {
+		return window.location.href.split("/")[3] === "auction"
+	}
+
 	return (
 		<header className="flex--between">
 			<div className="flex">
@@ -10,8 +19,29 @@ export default function Header({ togglePointsModal, toggleAboutModal }: any) {
 						<img src={helixLogo} alt="Helix logo" />
 					</div>
 				</a>
-				<h1 className="brand--color">VAULTS</h1>
+				<h1 className="brand--color" onClick={isStakingPage}>
+					VAULTS
+				</h1>
 			</div>
+			{getAuctionPoolTotal() > 0 && isStakingPage() && (
+				<div className="auction-total">
+					POOL TOTAL :{" "}
+					<span className="brand--color">
+						{getAuctionPoolTotal()}{" "}
+						<i className="fa-brands fa-ethereum"></i>
+					</span>{" "}
+				</div>
+			)}
+			{getAuctionMinPrice() > 0 && isStakingPage() && (
+				<div className="minimum-price">
+					MIN. PRICE:{" "}
+					<span className="brand--color">
+						{" "}
+						{getAuctionMinPrice()}{" "}
+						<i className="fa-brands fa-ethereum"></i>
+					</span>
+				</div>
+			)}
 			<div className="flex gap">
 				<ul className="nav-list flex gap">
 					<li>
@@ -31,7 +61,11 @@ export default function Header({ togglePointsModal, toggleAboutModal }: any) {
 						className="points-modal-btn"
 						onClick={togglePointsModal}
 					>
-						<i id="pointModalIcon" className="fa-solid fa-coins"></i>Points
+						<i
+							id="pointModalIcon"
+							className="fa-solid fa-coins"
+						></i>
+						Points
 					</li>
 					<li
 						id="aboutModalBtn"

@@ -11,7 +11,8 @@ export default function Layout({
 	isScrollBtnVisible,
 	isSnackbarShowing,
 	snackbarMessageType,
-	openSnackBar
+	openSnackBar,
+	auctionData
 }: any) {
 	const [isPointsModalShowing, setIsPointsModalShowing] = useState(false)
 	const [isAboutModalShowing, setIsAboutModalShowing] = useState(false)
@@ -43,6 +44,21 @@ export default function Layout({
 		}
 	}
 
+	function getAuctionPoolTotal(): number {
+		return auctionData.leaderboard
+			? auctionData.leaderboard
+					.map((bidder: AuctionBidder) => +bidder.value)
+					.reduce((total: number, acc: number) => total + acc)
+					.toFixed(5)
+			: 0
+	}
+
+	function getAuctionMinPrice(): number {
+		return auctionData.minimumPrice
+			? auctionData.minimumPrice.toFixed(3)
+			: 0
+	}
+
 	return (
 		<>
 			{isSnackbarShowing && (
@@ -51,6 +67,8 @@ export default function Layout({
 			<Header
 				togglePointsModal={togglePointsModal}
 				toggleAboutModal={toggleAboutModal}
+				getAuctionPoolTotal={getAuctionPoolTotal}
+				getAuctionMinPrice={getAuctionMinPrice}
 			/>
 			{children}
 			{isScrollBtnVisible && <ScrollUpButton />}

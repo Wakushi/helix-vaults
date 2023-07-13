@@ -63,6 +63,7 @@ export default function App() {
 				isSnackbarShowing={isSnackbarShowing}
 				snackbarMessageType={snackbarMessageType}
 				openSnackBar={openSnackBar}
+				auctionData={auctionData}
 			>
 				<Routes>
 					<Route
