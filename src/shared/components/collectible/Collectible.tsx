@@ -102,12 +102,14 @@ export default function Collectible({ data, type }: CollectibleProps) {
 
 			<div className="image-container">
 				<img src={getCollectibleImg(tokenId)} />
-				{type === "collectible" && <h6>x {amount} </h6>}
+				{type === "collectible" && (
+					<div className="amount-container flex--center">
+						<h6>x {amount} </h6>
+					</div>
+				)}
 			</div>
 			<div className="collectible-info-bottom">
-				<p>
-					Staked period : {getStackedPeriodDays(stakedPeriod)} days
-				</p>
+				<p>Staked period : {getStackedPeriodDays(stakedPeriod)} days</p>
 				<p>Staked the {getStackingStartDate(startTimestamp)} </p>
 				<p>Locked until the {getStackingEndDate(endTimestamp)}</p>
 			</div>

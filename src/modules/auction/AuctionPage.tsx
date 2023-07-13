@@ -26,9 +26,9 @@ export default function AuctionPage({
 							<div className="bids-head">
 								<span>Bids</span>
 							</div>
-							<div className="bid-amount-head">Bid amount</div>
-							<div className="cost-head">Cost</div>
-							<div className="remainder-head">Remainder</div>
+							<div className="bid-amount-head">Bid amount <i className="fa-brands fa-ethereum"></i></div>
+							<div className="cost-head">Cost <i className="fa-brands fa-ethereum"></i></div>
+							<div className="remainder-head">Remainder <i className="fa-brands fa-ethereum"></i></div>
 							<div className="nfts-head">NFTs</div>
 						</div>
 						{auctionData.leaderboard && (

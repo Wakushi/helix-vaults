@@ -31,7 +31,7 @@ export default function Header({ togglePointsModal, toggleAboutModal }: any) {
 						className="points-modal-btn"
 						onClick={togglePointsModal}
 					>
-						<i className="fa-solid fa-coins"></i>Points
+						<i id="pointModalIcon" className="fa-solid fa-coins"></i>Points
 					</li>
 					<li
 						id="aboutModalBtn"

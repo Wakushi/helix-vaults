@@ -30,6 +30,11 @@
 		width: 100%;
 		.auction-row {
 			width: 100%;
+			box-shadow: inset 1px 1px 10px rgb(0, 0, 0);
+
+			&:hover {
+				background-color: $secondary-color-dark !important;
+			}
 
 			&:nth-child(odd) {
 				background-color: $table-row;

@@ -1,4 +1,5 @@
 export const StaticImages: { [index: string]: string } = {
+	"0": "https://helix-metaverse.client.web3experts.ibbsinc.com/a1_512.png",
 	"2": "https://helix-metaverse.client.web3experts.ibbsinc.com/a1_512.png",
 	"Gold Mystery Car":
 		"https://helix-metaverse.client.web3experts.ibbsinc.com/a2_gold_512.png",

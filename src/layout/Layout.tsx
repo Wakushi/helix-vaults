@@ -17,8 +17,12 @@ export default function Layout({
 	const [isAboutModalShowing, setIsAboutModalShowing] = useState(false)
 
 	function togglePointsModal({ target }: any) {
-		if (target.id !== "modal-container" && target.id !== "pointModalBtn")
-			return
+		const authorizedInteraction = [
+			"modal-container",
+			"pointModalBtn",
+			"pointModalIcon"
+		]
+		if (!authorizedInteraction.includes(target.id)) return
 		setIsPointsModalShowing((prevIsShown) => (prevIsShown = !prevIsShown))
 	}
 

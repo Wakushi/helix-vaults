@@ -79,17 +79,23 @@
 			transition: 1s;
 		}
 
-		h6 {
-			font-size: 1.2rem;
-			font-weight: 500;
+		.amount-container {
 			position: absolute;
 			bottom: 42px;
 			right: 15px;
-			text-shadow: 1px 1px 5px black;
+			width: 40px;
+			height: 40px;
+			white-space: nowrap;
 			background-color: #07070727;
 			border-radius: 50%;
 			padding: 0.4rem 0.5rem;
 			box-shadow: inset 1px 1px 5px black;
+
+			h6 {
+				font-size: 1.2rem;
+				font-weight: 500;
+				text-shadow: 1px 1px 5px black;
+			}
 		}
 	}
 }
