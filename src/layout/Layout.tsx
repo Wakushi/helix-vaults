@@ -5,6 +5,10 @@ import AboutModal from "../shared/components/about-modal/AboutModal"
 import PointsModal from "../shared/components/points-modal/PointsModal"
 import ScrollUpButton from "../shared/components/scroll-up-button/ScrollUpButton"
 import Snackbar from "../shared/components/snackbar/Snackbar"
+import {
+	FORMULA_MIN_ETH_AMOUNT,
+	MINIMUM_BID_PRICE
+} from "../core/services/price-data.service"
 
 export default function Layout({
 	children,
@@ -12,7 +16,9 @@ export default function Layout({
 	isSnackbarShowing,
 	snackbarMessageType,
 	openSnackBar,
-	auctionData
+	auctionData,
+	toggleFormula,
+	isFormulaActivated
 }: any) {
 	const [isPointsModalShowing, setIsPointsModalShowing] = useState(false)
 	const [isAboutModalShowing, setIsAboutModalShowing] = useState(false)
@@ -54,9 +60,16 @@ export default function Layout({
 	}
 
 	function getAuctionMinPrice(): number {
-		return auctionData.minimumPrice
-			? auctionData.minimumPrice.toFixed(3)
-			: 0
+		if (
+			getAuctionPoolTotal() >= FORMULA_MIN_ETH_AMOUNT ||
+			isFormulaActivated
+		) {
+			return auctionData.minimumPrice
+				? auctionData.minimumPrice.toFixed(3)
+				: 0
+		} else {
+			return MINIMUM_BID_PRICE
+		}
 	}
 
 	return (
@@ -69,6 +82,8 @@ export default function Layout({
 				toggleAboutModal={toggleAboutModal}
 				getAuctionPoolTotal={getAuctionPoolTotal}
 				getAuctionMinPrice={getAuctionMinPrice}
+				isFormulaActivated={isFormulaActivated}
+				toggleFormula={toggleFormula}
 			/>
 			{children}
 			{isScrollBtnVisible && <ScrollUpButton />}

@@ -83,4 +83,87 @@ header {
 			font-size: 1.3rem;
 		}
 	}
+
+	.minimum-price {
+		.fa-circle-info {
+			font-size: 0.8rem;
+			position: absolute;
+			cursor: pointer;
+			color: white;
+			&:hover {
+				color: $secondary-color-light;
+			}
+		}
+	}
+
+	.header-info-modal {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		background-color: $discord-background-color;
+		transition: 800ms;
+		border-radius: 0 0 1rem 1rem;
+		box-shadow: 1px 1px 8px black;
+		padding-bottom: 1rem;
+
+		.info-image-container {
+			position: relative;
+			overflow: hidden;
+
+			.fa-caret-up {
+				position: absolute;
+				bottom: 10px;
+				right: 20px;
+				font-size: 1.4rem;
+				cursor: pointer;
+
+				&:hover {
+					color: $secondary-color-light;
+				}
+			}
+		}
+
+		.info-option {
+			box-shadow: 1px 1px 8px #111;
+			padding: 0.3rem 4rem;
+			background-color: $secondary-color-light;
+			p {
+				font-weight: 600;
+				color: #fff;
+				text-shadow: 2px 2px 3px #111;
+			}
+			input {
+				width: 15px;
+				height: 15px;
+			}
+
+			.switch-container {
+				width: 40px;
+				height: 20px;
+				border: $border-light;
+				display: flex;
+				border-radius: 50px;
+				overflow: hidden;
+				background-color: rgb(79, 74, 74);
+				transition: 0.5s;
+				box-shadow: inset 4px 4px 10px rgb(0, 0, 0);
+				cursor: pointer;
+			}
+
+			.box-button {
+				border-radius: 50%;
+				position: absolute;
+				width: 18px;
+				height: 18px;
+				transition: 1s;
+				background-color: rgb(253, 253, 253);
+				pointer-events: none;
+
+				i {
+					font-size: 0.9rem;
+					color: $secondary-color-dark;
+				}
+			}
+		}
+	}
 }

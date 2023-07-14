@@ -13,6 +13,13 @@ export default function App() {
 	const [snackbarMessageType, setSnackbarMessageType] = useState("copy")
 	const [isSnackbarShowing, setIsSnackbarShowing] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
+	const [isFormulaActivated, setIsFormulaActivated] = useState(false)
+
+	function toggleFormula(): void {
+		setIsFormulaActivated(
+			(prevIsFormula) => (prevIsFormula = !prevIsFormula)
+		)
+	}
 
 	function getAuctionData(allData: boolean = false): void {
 		const url = allData
@@ -64,6 +71,8 @@ export default function App() {
 				snackbarMessageType={snackbarMessageType}
 				openSnackBar={openSnackBar}
 				auctionData={auctionData}
+				isFormulaActivated={isFormulaActivated}
+				toggleFormula={toggleFormula}
 			>
 				<Routes>
 					<Route
@@ -88,6 +97,7 @@ export default function App() {
 								getAuctionData={getAuctionData}
 								isLoading={isLoading}
 								setIsLoading={setIsLoading}
+								isFormulaActivated={isFormulaActivated}
 							/>
 						}
 					/>
