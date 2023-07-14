@@ -9,7 +9,11 @@
 
 	.rank-content {
 		position: relative;
-		padding: 10vw 20vw;
+		padding: 10vw 14vw;
+
+		@media (width > 550px) {
+			padding: 10vw 20vw;
+		}
 		h2,
 		p {
 			opacity: 0;
