@@ -1,31 +1,43 @@
 @import "../../assets/variables.scss";
 
 .auction-container {
-	overflow-x: scroll;
+	overflow-x: auto;
+	height: 100vh; // you can adjust the height as needed
+
 	@media (width > 850px) {
 		overflow-x: hidden;
+	}
+
+	.auction-header {
+		opacity: 0;
+		animation: fade-in-top 1s 1s ease-in-out forwards;
+		text-align: center;
+		position: sticky;
+		z-index: 2;
+		width: 100%;
+		min-width: 850px;
+		font-weight: 600;
+		font-size: 1.2rem;
+		top: 54px;
+		background-color: #000;
+
+		div {
+			flex: 1;
+			padding: 0.45em 0;
+			white-space: nowrap;
+		}
 	}
 }
 
 .auction-page {
-	margin-top: 5rem;
+	position: relative;
 	border: $border-light;
 	text-align: center;
 	min-width: 850px;
 	animation: fade-in-left 1s ease-in-out;
 
-	margin: 5rem auto 0;
+	margin: 3rem auto 0;
 
-	.auction-header {
-		width: 100%;
-		font-weight: 600;
-		font-size: 1.2rem;
-
-		div {
-			flex: 1;
-			padding: 0.3rem;
-		}
-	}
 	.auction-table {
 		width: 100%;
 		.auction-row {

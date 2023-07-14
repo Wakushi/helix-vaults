@@ -51,7 +51,6 @@ export default function AuctionPage({
 		<div>
 			{!isLoading && (
 				<div className="auction-container">
-					<div className="auction-page flex--column">
 						<div className="auction-header flex--between">
 							<div className="rank-head">Rank</div>
 							<div className="bidder-head">Bidder</div>
@@ -74,6 +73,7 @@ export default function AuctionPage({
 							</div>
 							<div className="nfts-head">NFTs</div>
 						</div>
+					<div className="auction-page flex--column">
 						{auctionData.leaderboard && (
 							<div className="auction-table flex--column">
 								{auctionData.leaderboard.map(
