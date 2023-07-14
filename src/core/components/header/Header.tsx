@@ -16,7 +16,7 @@ export default function Header({
 	toggleFormula
 }: any) {
 	const [isInfoShowing, setIsInfoShowing] = useState(false)
-	function isStakingPage(): boolean {
+	function isAuctionPage(): boolean {
 		return window.location.href.split("/")[3] === "auction"
 	}
 
@@ -46,11 +46,11 @@ export default function Header({
 						<img src={helixLogo} alt="Helix logo" />
 					</div>
 				</a>
-				<h1 className="brand--color" onClick={isStakingPage}>
+				<h1 className="brand--color">
 					VAULTS
 				</h1>
 			</div>
-			{getAuctionPoolTotal() > 0 && isStakingPage() && (
+			{getAuctionPoolTotal() > 0 && isAuctionPage() && (
 				<div className="auction-total">
 					POOL TOTAL :{" "}
 					<span className="brand--color">
@@ -61,7 +61,7 @@ export default function Header({
 					</span>{" "}
 				</div>
 			)}
-			{getAuctionMinPrice() > 0 && isStakingPage() && (
+			{getAuctionMinPrice() > 0 && isAuctionPage() && (
 				<div className="minimum-price">
 					MIN. PRICE:{" "}
 					<span className="brand--color">
@@ -79,12 +79,12 @@ export default function Header({
 			)}
 			<div className="flex gap">
 				<ul className="nav-list flex gap">
-					<li>
+					{isAuctionPage() && <li>
 						<i
 							className="fa-solid fa-circle-info mobile-info-icon"
 							onClick={toggleInfoModal}
 						></i>
-					</li>
+					</li>}
 					<li>
 						<a href="/" className="flex min--gap">
 							<i className="fa-solid fa-vault"></i>
