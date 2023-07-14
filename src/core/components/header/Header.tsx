@@ -27,7 +27,7 @@ export default function Header({
 	}
 
 	const infoModalStyle = {
-		transform: isInfoShowing ? "translateY(0%)" : "translateY(-100%)"
+		transform: isInfoShowing ? "translate(-50%, 0%)" : "translate(-50%, -100%)"
 	}
 
 	const formulaToggleStyle = {
@@ -79,6 +79,12 @@ export default function Header({
 			)}
 			<div className="flex gap">
 				<ul className="nav-list flex gap">
+					<li>
+						<i
+							className="fa-solid fa-circle-info mobile-info-icon"
+							onClick={toggleInfoModal}
+						></i>
+					</li>
 					<li>
 						<a href="/" className="flex min--gap">
 							<i className="fa-solid fa-vault"></i>

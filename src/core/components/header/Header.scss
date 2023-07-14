@@ -41,6 +41,13 @@ header {
 			transition: 500ms;
 			cursor: pointer;
 
+			.mobile-info-icon {
+				font-size: 1.2rem;
+				@media (width > 900px) {
+					display: none;
+				}
+			}
+
 			&:hover {
 				color: $secondary-color-light;
 			}
@@ -100,6 +107,8 @@ header {
 		position: absolute;
 		top: 0;
 		left: 50%;
+		width: 100%;
+		max-width: 375px;
 		background-color: $discord-background-color;
 		transition: 800ms;
 		border-radius: 0 0 1rem 1rem;
