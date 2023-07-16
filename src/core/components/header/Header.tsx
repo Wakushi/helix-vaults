@@ -13,7 +13,8 @@ export default function Header({
 	getAuctionPoolTotal,
 	getAuctionMinPrice,
 	isFormulaActivated,
-	toggleFormula
+	toggleFormula,
+	getNumberOfBidders
 }: any) {
 	const [isInfoShowing, setIsInfoShowing] = useState(false)
 	function isAuctionPage(): boolean {
@@ -27,7 +28,9 @@ export default function Header({
 	}
 
 	const infoModalStyle = {
-		transform: isInfoShowing ? "translate(-50%, 0%)" : "translate(-50%, -100%)"
+		transform: isInfoShowing
+			? "translate(-50%, 0%)"
+			: "translate(-50%, -100%)"
 	}
 
 	const formulaToggleStyle = {
@@ -46,9 +49,7 @@ export default function Header({
 						<img src={helixLogo} alt="Helix logo" />
 					</div>
 				</a>
-				<h1 className="brand--color">
-					VAULTS
-				</h1>
+				<h1 className="brand--color">VAULTS</h1>
 			</div>
 			{getAuctionPoolTotal() > 0 && isAuctionPage() && (
 				<div className="auction-total">
@@ -57,7 +58,8 @@ export default function Header({
 						{isFormulaActivated
 							? ">" + FORMULA_MIN_ETH_AMOUNT
 							: getAuctionPoolTotal()}{" "}
-						<i className="fa-brands fa-ethereum"></i>
+						<i className="fa-brands fa-ethereum"></i> (
+						{getNumberOfBidders()} bidders)
 					</span>{" "}
 				</div>
 			)}
@@ -79,12 +81,14 @@ export default function Header({
 			)}
 			<div className="flex gap">
 				<ul className="nav-list flex gap">
-					{isAuctionPage() && <li>
-						<i
-							className="fa-solid fa-circle-info mobile-info-icon"
-							onClick={toggleInfoModal}
-						></i>
-					</li>}
+					{isAuctionPage() && (
+						<li>
+							<i
+								className="fa-solid fa-circle-info mobile-info-icon"
+								onClick={toggleInfoModal}
+							></i>
+						</li>
+					)}
 					<li>
 						<a href="/" className="flex min--gap">
 							<i className="fa-solid fa-vault"></i>

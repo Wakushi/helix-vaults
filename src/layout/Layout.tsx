@@ -6,6 +6,7 @@ import PointsModal from "../shared/components/points-modal/PointsModal"
 import ScrollUpButton from "../shared/components/scroll-up-button/ScrollUpButton"
 import Snackbar from "../shared/components/snackbar/Snackbar"
 import {
+	CURRENT_POOL_TOTAL,
 	FORMULA_MIN_ETH_AMOUNT,
 	MINIMUM_BID_PRICE
 } from "../core/services/price-data.service"
@@ -51,12 +52,14 @@ export default function Layout({
 	}
 
 	function getAuctionPoolTotal(): number {
-		return auctionData.leaderboard
-			? auctionData.leaderboard
-					.map((bidder: AuctionBidder) => +bidder.value)
-					.reduce((total: number, acc: number) => total + acc)
-					.toFixed(5)
-			: 0
+		// API was updated. Switching to hardcoded.
+		// return auctionData.leaderboard
+		// 	? auctionData.leaderboard
+		// 			.map((bidder: AuctionBidder) => +bidder.value)
+		// 			.reduce((total: number, acc: number) => total + acc)
+		// 			.toFixed(5)
+		// 	: 0
+		return CURRENT_POOL_TOTAL
 	}
 
 	function getAuctionMinPrice(): number {
@@ -72,6 +75,10 @@ export default function Layout({
 		}
 	}
 
+	function getNumberOfBidders(): number {
+		return Math.ceil(CURRENT_POOL_TOTAL / auctionData.minimumPrice)
+	}
+
 	return (
 		<>
 			{isSnackbarShowing && (
@@ -84,6 +91,7 @@ export default function Layout({
 				getAuctionMinPrice={getAuctionMinPrice}
 				isFormulaActivated={isFormulaActivated}
 				toggleFormula={toggleFormula}
+				getNumberOfBidders={getNumberOfBidders}
 			/>
 			{children}
 			{isScrollBtnVisible && <ScrollUpButton />}

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import "./AuctionPage.scss"
 import { MINIMUM_BID_PRICE } from "../../core/services/price-data.service"
+import "./AuctionPage.scss"
 
 export default function AuctionPage({
 	auctionData,
@@ -51,28 +51,26 @@ export default function AuctionPage({
 		<div>
 			{!isLoading && (
 				<div className="auction-container">
-						<div className="auction-header flex--between">
-							<div className="rank-head">Rank</div>
-							<div className="bidder-head">Bidder</div>
-							<div className="vault-head">
-								<span>Vault</span>
-							</div>
-							<div className="bids-head">
-								<span>Bids</span>
-							</div>
-							<div className="bid-amount-head">
-								Bid amount{" "}
-								<i className="fa-brands fa-ethereum"></i>
-							</div>
-							<div className="cost-head">
-								Cost <i className="fa-brands fa-ethereum"></i>
-							</div>
-							<div className="remainder-head">
-								Remainder{" "}
-								<i className="fa-brands fa-ethereum"></i>
-							</div>
-							<div className="nfts-head">NFTs</div>
+					<div className="auction-header flex--between">
+						<div className="rank-head">Rank</div>
+						<div className="bidder-head">Bidder</div>
+						<div className="vault-head">
+							<span>Vault</span>
 						</div>
+						<div className="bids-head">
+							<span>Bids</span>
+						</div>
+						<div className="bid-amount-head">
+							Bid amount <i className="fa-brands fa-ethereum"></i>
+						</div>
+						<div className="cost-head">
+							Cost <i className="fa-brands fa-ethereum"></i>
+						</div>
+						<div className="remainder-head">
+							Remainder <i className="fa-brands fa-ethereum"></i>
+						</div>
+						<div className="nfts-head">NFTs</div>
+					</div>
 					<div className="auction-page flex--column">
 						{auctionData.leaderboard && (
 							<div className="auction-table flex--column">
