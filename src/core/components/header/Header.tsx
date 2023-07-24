@@ -1,6 +1,4 @@
-import { useState } from "react"
 import helixLogo from "../../../assets/images/logo/helix-logo.webp"
-import auctionPriceInfo from "../../../assets/images/other/helix-auction-price-info.png"
 import "./Header.scss"
 import {
 	FORMULA_MIN_ETH_AMOUNT,
@@ -12,33 +10,10 @@ export default function Header({
 	toggleAboutModal,
 	getAuctionPoolTotal,
 	getAuctionMinPrice,
-	isFormulaActivated,
-	toggleFormula,
-	getNumberOfBidders
+	isFormulaActivated
 }: any) {
-	const [isInfoShowing, setIsInfoShowing] = useState(false)
 	function isAuctionPage(): boolean {
 		return window.location.href.split("/")[3] === "auction"
-	}
-
-	function toggleInfoModal(): void {
-		setIsInfoShowing(
-			(prevIsInfoShowing) => (prevIsInfoShowing = !prevIsInfoShowing)
-		)
-	}
-
-	const infoModalStyle = {
-		transform: isInfoShowing
-			? "translate(-50%, 0%)"
-			: "translate(-50%, -100%)"
-	}
-
-	const formulaToggleStyle = {
-		transform: isFormulaActivated ? "translateX(100%)" : "translateX(0%)"
-	}
-
-	const formulaSwitchStyle = {
-		backgroundColor: isFormulaActivated ? "#ff4242" : "rgb(79, 74, 74)"
 	}
 
 	return (
@@ -58,8 +33,7 @@ export default function Header({
 						{isFormulaActivated
 							? ">" + FORMULA_MIN_ETH_AMOUNT
 							: getAuctionPoolTotal()}{" "}
-						<i className="fa-brands fa-ethereum"></i> (
-						{getNumberOfBidders()} bidders)
+						<i className="fa-brands fa-ethereum"></i>
 					</span>{" "}
 				</div>
 			)}
@@ -72,23 +46,11 @@ export default function Header({
 							? getAuctionMinPrice()
 							: MINIMUM_BID_PRICE}{" "}
 						<i className="fa-brands fa-ethereum"></i>
-						<i
-							className="fa-solid fa-circle-info"
-							onClick={toggleInfoModal}
-						></i>
 					</span>
 				</div>
 			)}
 			<div className="flex gap">
 				<ul className="nav-list flex gap">
-					{isAuctionPage() && (
-						<li>
-							<i
-								className="fa-solid fa-circle-info mobile-info-icon"
-								onClick={toggleInfoModal}
-							></i>
-						</li>
-					)}
 					<li>
 						<a href="/" className="flex min--gap">
 							<i className="fa-solid fa-vault"></i>
@@ -121,35 +83,6 @@ export default function Header({
 						<span className="nav-text"> About</span>
 					</li>
 				</ul>
-			</div>
-
-			<div className="header-info-modal" style={infoModalStyle}>
-				<div className="info-image-container">
-					<i
-						className="fa-solid fa-caret-up hover"
-						onClick={toggleInfoModal}
-					></i>
-					<img
-						src={auctionPriceInfo}
-						alt="Info about the auction mint price"
-					/>
-				</div>
-				<div className="info-option flex--between">
-					<p>SIMULATE FORMULA</p>
-					<div
-						className="switch-container btn-selected"
-						style={formulaSwitchStyle}
-						onClick={toggleFormula}
-					>
-						<div
-							className="box-button switch flex--center"
-							style={formulaToggleStyle}
-							onClick={toggleFormula}
-						>
-							<i className="fa-brands fa-ethereum"></i>
-						</div>
-					</div>{" "}
-				</div>
 			</div>
 		</header>
 	)
