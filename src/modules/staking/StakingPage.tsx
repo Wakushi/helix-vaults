@@ -25,7 +25,8 @@ export default function StakingPage({
 		"land",
 		"pass",
 		"airdrop1",
-		"airdrop2"
+		"airdrop2",
+		"pfp"
 	])
 
 	useEffect(() => {
@@ -79,7 +80,14 @@ export default function StakingPage({
 
 	function filterCollectibles(type: string): void {
 		if (type === "all") {
-			setFilters(["collectible", "land", "pass", "airdrop1", "airdrop2"])
+			setFilters([
+				"collectible",
+				"land",
+				"pass",
+				"airdrop1",
+				"airdrop2",
+				"pfp"
+			])
 		} else {
 			setFilters([type])
 		}
@@ -139,6 +147,12 @@ export default function StakingPage({
 							onClick={() => filterCollectibles("airdrop2")}
 						>
 							Airdrop n°2
+						</button>
+						<button
+							className="basic-button"
+							onClick={() => filterCollectibles("pfp")}
+						>
+							Citizen
 						</button>
 					</div>
 
@@ -205,6 +219,19 @@ export default function StakingPage({
 											key={collectible.id}
 											data={collectible}
 											type="airdrop2"
+										/>
+									)
+								}
+							)}
+						{userItems.stakes &&
+							isFiltered("pfp") &&
+							userItems.stakes.pfp.map(
+								(collectible: Collectible) => {
+									return (
+										<Collectible
+											key={collectible.id}
+											data={collectible}
+											type="pfp"
 										/>
 									)
 								}

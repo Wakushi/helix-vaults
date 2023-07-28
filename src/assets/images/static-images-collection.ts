@@ -1,3 +1,5 @@
+import pfp from "./other/pfp.gif"
+
 export const StaticImages: { [index: string]: string } = {
 	"0": "https://helix-metaverse.client.web3experts.ibbsinc.com/a1_512.png",
 	"2": "https://helix-metaverse.client.web3experts.ibbsinc.com/a1_512.png",
@@ -10,5 +12,6 @@ export const StaticImages: { [index: string]: string } = {
 	"Chrome Mystery Car":
 		"https://i.seadn.io/gcs/files/97922bef1d57080652b935f6b8470ce2.png?auto=format&dpr=1&w=256",
 	"Purple Mystery Car":
-		"https://i.seadn.io/gcs/files/7be74c0ecbf6c87f6ca459739c2428ee.png?auto=format&dpr=1&w=384"
+		"https://i.seadn.io/gcs/files/7be74c0ecbf6c87f6ca459739c2428ee.png?auto=format&dpr=1&w=384",
+	"pfp": pfp
 }

@@ -22,7 +22,7 @@ export default function Rank({ userRank, userBid }: any) {
 						<h2>Auction rank</h2>
 						<p className="brand--color bold--text">
 							{" "}
-							{userBid.rank}/{userBid.leaderboard.length}{" "}
+							{userBid.rank}/538{" "}
 						</p>
 						<h2>Total bid</h2>
 						<p className="brand--color bold--text">

@@ -39,6 +39,8 @@ export default function Collectible({ data, type }: CollectibleProps) {
 				return StaticImages[getAirdrop1ImageIndex()]
 			case "airdrop2":
 				return StaticImages[getAirdrop2ImageIndex()]
+			case "pfp":
+				return StaticImages["pfp"]
 			default:
 				return helixLogo
 		}
@@ -56,6 +58,8 @@ export default function Collectible({ data, type }: CollectibleProps) {
 				return "1959 Archipelago Cruisemaster"
 			case "airdrop2":
 				return (data as Airdrop2).name
+			case "pfp":
+				return "Helix Citizen"
 
 			default:
 				return "UNKNOWN"

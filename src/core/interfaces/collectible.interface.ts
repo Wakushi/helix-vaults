@@ -9,6 +9,7 @@ interface Collectibles {
 	collectibles: Collectible[]
 	lands: Land[]
 	passes: Collectible[]
+	pfp: Collectible[]
 }
 
 interface UnstackedCollectible {
