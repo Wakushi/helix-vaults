@@ -21,7 +21,7 @@ export default function App() {
 		)
 	}
 
-	function getAuctionData(allData: boolean = false): void {
+	function getAuctionData(allData = false): void {
 		const url = allData
 			? "https://auction.helixmetaverse.com/api/logs/leaderboard/1"
 			: `https://auction.helixmetaverse.com/api/logs/leaderboard/1?address=${userKey}`

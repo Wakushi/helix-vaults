@@ -57,12 +57,6 @@ export default function Header({
 							<span className="nav-text"> Vault</span>
 						</a>
 					</li>
-					<li>
-						<a href="auction" className="flex min--gap">
-							<i className="fa-solid fa-gavel"></i>
-							<span className="nav-text"> Auction</span>
-						</a>
-					</li>
 					<li
 						id="pointModalBtn"
 						className="points-modal-btn"
